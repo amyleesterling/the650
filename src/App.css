@@ -8,7 +8,7 @@
   top: -60px;
   z-index: 100;
   background: var(--accent-500);
-  color: #1a1207;
+  color: var(--accent-ink);
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-pill);
   font-weight: 600;

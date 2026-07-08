@@ -108,8 +108,8 @@
   --beat-accent-text: var(--accent-300);
 }
 .beat--calm {
-  --beat-accent: #9d8bff;
-  --beat-accent-text: #b7abff;
+  --beat-accent: #17b8c4;
+  --beat-accent-text: #6fe4ef;
 }
 
 /* ---- invitation ------------------------------------------------------ */
@@ -148,11 +148,11 @@
 }
 .why__btn--primary {
   background: linear-gradient(180deg, var(--accent-400), var(--accent-600));
-  color: #1a1207;
+  color: var(--accent-ink);
   border-color: transparent;
 }
 .why__btn--primary:hover {
-  color: #1a1207;
+  color: var(--accent-ink);
 }
 
 @media (min-width: 820px) {

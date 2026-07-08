@@ -32,12 +32,12 @@ body {
   background-image:
     radial-gradient(
       120% 80% at 50% -10%,
-      rgba(70, 185, 172, 0.06),
+      rgba(30, 201, 138, 0.06),
       transparent 60%
     ),
     radial-gradient(
       90% 60% at 90% 110%,
-      rgba(255, 154, 61, 0.05),
+      rgba(63, 142, 240, 0.06),
       transparent 55%
     );
   background-attachment: fixed;
