@@ -1,0 +1,114 @@
+.practice {
+  padding-bottom: var(--space-8);
+}
+
+.practice__hero {
+  padding-top: clamp(var(--space-7), 8vw, var(--space-9));
+  padding-bottom: var(--space-6);
+}
+.practice__title {
+  font-size: var(--step-3);
+  max-width: 22ch;
+}
+
+.practice__what {
+  margin-top: var(--space-6);
+}
+.practice__whatgrid {
+  display: grid;
+  gap: var(--space-6);
+}
+.practice__whatgrid h2 {
+  font-size: var(--step-1);
+}
+.practice__whatgrid p {
+  color: var(--ink-200);
+  line-height: 1.7;
+}
+
+.practice__steps {
+  margin-top: var(--space-8);
+}
+.practice__list {
+  list-style: none;
+  counter-reset: step;
+  padding: 0;
+  margin: var(--space-4) 0 0;
+  display: grid;
+  gap: var(--space-2);
+}
+.practice__step {
+  display: flex;
+  gap: var(--space-4);
+  align-items: baseline;
+  padding: var(--space-5) 0;
+  border-top: 1px solid var(--border);
+}
+.practice__step:last-child {
+  border-bottom: 1px solid var(--border);
+}
+.practice__stepn {
+  font-family: var(--font-mono);
+  font-size: var(--step-1);
+  color: var(--accent-400);
+  min-width: 2.4ch;
+}
+.practice__step h3 {
+  font-size: var(--step-1);
+  margin-bottom: var(--space-2);
+}
+.practice__step p {
+  color: var(--ink-200);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.practice__note {
+  margin-top: var(--space-8);
+  max-width: var(--measure);
+}
+.practice__note p {
+  color: var(--text-muted);
+  border-left: 2px solid var(--ground-500);
+  padding-left: var(--space-4);
+}
+.practice__note strong {
+  color: var(--ink-100);
+}
+
+.practice__cta {
+  margin-top: var(--space-5);
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.practice__btn {
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  color: var(--ink-100);
+  background: var(--surface);
+  transition:
+    transform var(--dur-base) var(--ease-settle),
+    border-color var(--dur-base) var(--ease-settle);
+}
+.practice__btn:hover {
+  color: var(--ink-100);
+  transform: translateY(-2px);
+  border-color: var(--ground-400);
+}
+.practice__btn--primary {
+  background: linear-gradient(180deg, var(--accent-400), var(--accent-600));
+  color: #1a1207;
+  border-color: transparent;
+}
+.practice__btn--primary:hover {
+  color: #1a1207;
+}
+
+@media (min-width: 760px) {
+  .practice__whatgrid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-7);
+  }
+}

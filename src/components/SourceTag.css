@@ -1,0 +1,44 @@
+.srctag {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: var(--step--1);
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.srctag__dot {
+  align-self: center;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: none;
+}
+.srctag--strong .srctag__dot {
+  background: var(--cool-500);
+}
+.srctag--moderate .srctag__dot {
+  background: var(--accent-400);
+}
+.srctag--popular-estimate .srctag__dot {
+  background: var(--ink-400);
+}
+
+.srctag__strength {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-200);
+}
+.srctag--strong .srctag__strength {
+  color: var(--cool-400);
+}
+.srctag--popular-estimate .srctag__strength {
+  color: var(--ink-300);
+}
+
+.srctag__cite {
+  font-style: italic;
+}

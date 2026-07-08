@@ -1,0 +1,92 @@
+.browse {
+  padding-top: clamp(var(--space-6), 6vw, var(--space-8));
+  padding-bottom: var(--space-7);
+}
+
+.browse__head {
+  max-width: 52ch;
+  margin-bottom: var(--space-7);
+}
+.browse__head h1 {
+  font-size: var(--step-3);
+}
+.browse__key--featured {
+  color: var(--accent-300);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent-500) 50%, transparent);
+}
+.browse__caveat {
+  font-size: var(--step--1);
+  border-left: 2px solid var(--ground-500);
+  padding-left: var(--space-3);
+  max-width: var(--measure);
+}
+
+.browse__region {
+  margin-bottom: var(--space-7);
+}
+.browse__regiontitle {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-400);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.browse__grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-3);
+}
+
+.mcard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  height: 100%;
+  padding: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--ink-100);
+  transition:
+    border-color var(--dur-base) var(--ease-settle),
+    transform var(--dur-base) var(--ease-settle),
+    background var(--dur-base) var(--ease-settle);
+}
+.mcard:hover {
+  color: var(--ink-100);
+  transform: translateY(-2px);
+  border-color: var(--ground-400);
+  background: var(--surface-raised);
+}
+.mcard.is-featured {
+  border-color: color-mix(in srgb, var(--accent-500) 40%, var(--border));
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--accent-500) 8%, var(--surface)),
+    var(--surface)
+  );
+}
+.mcard__name {
+  font-family: var(--font-serif);
+  font-size: var(--step-1);
+}
+.mcard__does {
+  font-size: var(--step--1);
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.mcard__badge {
+  margin-top: auto;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-400);
+}

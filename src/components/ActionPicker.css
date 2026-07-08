@@ -1,0 +1,49 @@
+.picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: center;
+}
+
+.picker__chip {
+  border: 1px solid var(--border);
+  background: var(--surface-raised);
+  color: var(--ink-200);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  font-size: var(--step--1);
+  letter-spacing: 0.01em;
+  transition:
+    color var(--dur-fast) var(--ease-soft),
+    border-color var(--dur-base) var(--ease-settle),
+    background var(--dur-base) var(--ease-settle),
+    transform var(--dur-base) var(--ease-settle);
+}
+.picker__chip:hover {
+  color: var(--ink-100);
+  border-color: var(--ground-400);
+  transform: translateY(-1px);
+}
+.picker__chip.is-active {
+  color: #1a1207;
+  background: linear-gradient(180deg, var(--accent-400), var(--accent-600));
+  border-color: transparent;
+  box-shadow: 0 6px 20px -8px var(--accent-glow);
+}
+
+.picker__chip.is-composite {
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--accent-500) 50%, var(--border));
+}
+.picker__chip.is-composite.is-active {
+  border-style: solid;
+}
+
+.picker__star {
+  margin-right: 6px;
+  color: var(--accent-400);
+  font-size: 0.85em;
+}
+.picker__chip.is-active .picker__star {
+  color: #1a1207;
+}

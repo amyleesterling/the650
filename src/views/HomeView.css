@@ -1,0 +1,125 @@
+.home {
+  padding-bottom: var(--space-7);
+}
+
+/* ---- hero ------------------------------------------------------------ */
+.home__hero {
+  padding-top: clamp(var(--space-6), 7vw, var(--space-9));
+  padding-bottom: var(--space-6);
+}
+.home__intro {
+  max-width: 40ch;
+}
+.home__title {
+  font-size: var(--step-4);
+  line-height: 1.04;
+  margin-bottom: var(--space-4);
+}
+
+/* ---- stage ----------------------------------------------------------- */
+.home__stage {
+  padding-top: var(--space-3);
+}
+
+.home__panel {
+  margin-top: var(--space-6);
+  display: grid;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.home__figurewrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  background:
+    radial-gradient(
+      60% 45% at 50% 34%,
+      color-mix(in srgb, var(--accent-500) 9%, transparent),
+      transparent 70%
+    );
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+}
+
+.home__figurewrap .figure {
+  max-width: 340px;
+}
+
+.home__meter {
+  margin-top: calc(-1 * var(--space-3));
+}
+
+.home__actionname {
+  font-size: var(--step-3);
+  margin-bottom: var(--space-4);
+}
+
+/* ---- scroll cue ------------------------------------------------------ */
+.home__cue {
+  margin-top: var(--space-8);
+  max-width: var(--content-max);
+}
+.home__cuetext {
+  font-family: var(--font-serif);
+  font-size: var(--step-2);
+  line-height: 1.4;
+  max-width: 26ch;
+  color: var(--ink-100);
+}
+.home__cuetext strong {
+  color: var(--accent-300);
+  font-weight: 600;
+}
+
+.home__links {
+  margin-top: var(--space-6);
+  display: grid;
+  gap: var(--space-4);
+}
+.home__biglink {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  background: var(--surface);
+  color: var(--ink-100);
+  transition:
+    border-color var(--dur-base) var(--ease-settle),
+    transform var(--dur-base) var(--ease-settle),
+    background var(--dur-base) var(--ease-settle);
+}
+.home__biglink span {
+  font-family: var(--font-serif);
+  font-size: var(--step-1);
+}
+.home__biglink em {
+  font-style: normal;
+  color: var(--text-muted);
+  font-size: var(--step--1);
+}
+.home__biglink:hover {
+  color: var(--ink-100);
+  border-color: color-mix(in srgb, var(--accent-500) 45%, var(--border));
+  transform: translateY(-2px);
+  background: var(--surface-raised);
+}
+
+/* ---- responsive: two columns on wider screens ----------------------- */
+@media (min-width: 900px) {
+  .home__panel {
+    grid-template-columns: minmax(320px, 0.9fr) 1.1fr;
+    gap: var(--space-7);
+  }
+  .home__figurewrap {
+    position: sticky;
+    top: calc(var(--nav-h) + var(--space-4));
+  }
+  .home__links {
+    grid-template-columns: 1fr 1fr;
+  }
+}

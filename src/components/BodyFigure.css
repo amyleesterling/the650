@@ -1,0 +1,138 @@
+.figure {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+/* ---- silhouette ------------------------------------------------------ */
+.figure__body .torso,
+.figure__body .foot {
+  fill: url(#bodyFill);
+  stroke: #2b3d47;
+  stroke-width: 1.2;
+}
+.figure__body .limb {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+/* A faint rim so overlapping shapes still read as one soft body. */
+.figure__body {
+  filter: drop-shadow(0 10px 26px rgba(0, 0, 0, 0.45));
+}
+
+/* ---- resting muscles ------------------------------------------------- */
+.rest-dot {
+  fill: var(--muscle-rest);
+  opacity: 0.5;
+}
+
+/* ---- stabilizer shimmer --------------------------------------------- */
+.shimmer-dot {
+  fill: var(--cool-400);
+  opacity: 0;
+  animation: shimmer var(--dur-breath) var(--ease-soft) infinite;
+}
+@keyframes shimmer {
+  0%,
+  100% {
+    opacity: 0.06;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* ---- chain (downstream) --------------------------------------------- */
+.chain-core {
+  fill: var(--cool-400);
+  opacity: 0.9;
+}
+.chain-node {
+  animation: chainPulse var(--dur-breath) var(--ease-soft) infinite;
+}
+@keyframes chainPulse {
+  0%,
+  100% {
+    opacity: 0.65;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ---- active prime movers -------------------------------------------- */
+.active-core {
+  fill: var(--accent-300);
+}
+.active-halo {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: breathe var(--dur-breath) var(--ease-soft) infinite;
+}
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+.active-node {
+  /* Nodes appear with a gentle settle when an action is chosen. */
+  animation: nodeIn var(--dur-slow) var(--ease-settle) both;
+}
+@keyframes nodeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.active-node.is-interactive {
+  cursor: pointer;
+}
+.active-node.is-interactive:hover .active-core,
+.active-node.is-interactive:focus-visible .active-core {
+  fill: var(--accent-050);
+}
+.active-node.is-interactive:hover .active-halo {
+  opacity: 1;
+}
+.active-node:focus-visible {
+  outline: none;
+}
+.active-node:focus-visible .active-core {
+  stroke: var(--accent-050);
+  stroke-width: 2;
+}
+
+.active-node.is-focus .active-core {
+  fill: var(--accent-050);
+  r: 6;
+}
+.active-node.is-focus .active-halo {
+  animation-duration: calc(var(--dur-breath) * 0.8);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shimmer-dot {
+    opacity: 0.28;
+    animation: none;
+  }
+  .active-halo,
+  .chain-node,
+  .active-node {
+    animation: none;
+  }
+  .active-halo {
+    opacity: 0.85;
+  }
+}
