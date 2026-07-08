@@ -1,0 +1,145 @@
+.readout {
+  display: grid;
+  gap: var(--space-5);
+  animation: rise var(--dur-slow) var(--ease-settle) both;
+}
+
+.readout__framing {
+  font-family: var(--font-serif);
+  font-size: var(--step-1);
+  line-height: 1.4;
+  color: var(--ink-100);
+  margin: 0;
+  max-width: 40ch;
+}
+
+/* ---- honest count --------------------------------------------------- */
+.readout__counts {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+.readout__count {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-raised);
+  min-width: 0;
+}
+.readout__count--est {
+  border-style: dashed;
+  background: transparent;
+}
+.readout__num {
+  font-size: var(--step-2);
+  color: var(--ink-100);
+  line-height: 1;
+}
+.readout__count--est .readout__num {
+  color: var(--cool-400);
+}
+.readout__lbl {
+  font-size: var(--step--1);
+  color: var(--text-muted);
+}
+.readout__lbl em {
+  font-style: italic;
+  color: var(--ink-400);
+}
+.readout__plus {
+  align-self: center;
+  font-size: var(--step-1);
+  color: var(--ink-400);
+}
+
+.readout__note {
+  margin: 0;
+  font-size: var(--step--1);
+  color: var(--text-muted);
+  line-height: 1.55;
+  border-left: 2px solid var(--ground-500);
+  padding-left: var(--space-3);
+  max-width: var(--measure);
+}
+.readout__note-mark {
+  color: var(--cool-400);
+  margin-right: 6px;
+}
+
+/* ---- prime mover legend --------------------------------------------- */
+.readout__muscles {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.readout__muscle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 11px 5px 9px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  color: var(--ink-200);
+  font-size: var(--step--1);
+  background: var(--surface);
+  transition:
+    border-color var(--dur-base) var(--ease-settle),
+    color var(--dur-fast) var(--ease-soft),
+    background var(--dur-base) var(--ease-settle);
+}
+.readout__muscle-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-500);
+  box-shadow: 0 0 6px var(--accent-glow);
+  flex: none;
+}
+.readout__muscle:hover,
+.readout__muscle.is-active {
+  color: var(--ink-100);
+  border-color: color-mix(in srgb, var(--accent-500) 55%, var(--border));
+  background: var(--accent-soft);
+}
+.readout__shimmerhint {
+  font-size: var(--step--1);
+  font-style: italic;
+  max-width: var(--measure);
+  margin: 0;
+}
+
+/* ---- hidden load card ----------------------------------------------- */
+.readout__hidden,
+.readout__sequence {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--accent-500) 8%, var(--surface)),
+    var(--surface)
+  );
+  padding: var(--space-5);
+}
+.readout__hiddentext {
+  font-family: var(--font-serif);
+  font-size: var(--step-1);
+  line-height: 1.5;
+  color: var(--ink-100);
+  margin: 0 0 var(--space-3);
+}
+
+.readout__seq {
+  margin: var(--space-2) 0 0;
+  padding-left: var(--space-5);
+  color: var(--ink-200);
+}
+.readout__seq li {
+  margin-bottom: var(--space-1);
+}
