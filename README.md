@@ -1,5 +1,7 @@
 # The 650
 
+**[Visit the live site → amyleesterling.github.io/the650](https://amyleesterling.github.io/the650/)**
+
 **Feel all 650.** You have ~650 skeletal muscles. On any given day you
 consciously feel maybe a dozen — the other ~640 are working anyway, holding
 your head up, catching your balance, pumping your blood and lymph. The 650 is a
