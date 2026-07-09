@@ -99,11 +99,11 @@
 }
 .practice__btn--primary {
   background: linear-gradient(180deg, var(--accent-400), var(--accent-600));
-  color: #1a1207;
+  color: var(--accent-ink);
   border-color: transparent;
 }
 .practice__btn--primary:hover {
-  color: #1a1207;
+  color: var(--accent-ink);
 }
 
 @media (min-width: 760px) {

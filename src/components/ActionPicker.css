@@ -25,7 +25,7 @@
   transform: translateY(-1px);
 }
 .picker__chip.is-active {
-  color: #1a1207;
+  color: var(--accent-ink);
   background: linear-gradient(180deg, var(--accent-400), var(--accent-600));
   border-color: transparent;
   box-shadow: 0 6px 20px -8px var(--accent-glow);
@@ -45,5 +45,5 @@
   font-size: 0.85em;
 }
 .picker__chip.is-active .picker__star {
-  color: #1a1207;
+  color: var(--accent-ink);
 }

@@ -1,6 +1,6 @@
 # The 650
 
-**[Visit the live site → amyleesterling.github.io/the650](https://amyleesterling.github.io/the650/)**
+**🟢 Live: [amyleesterling.github.io/the650](https://amyleesterling.github.io/the650/)**
 
 **Feel all 650.** You have ~650 skeletal muscles. On any given day you
 consciously feel maybe a dozen — the other ~640 are working anyway, holding
@@ -54,10 +54,14 @@ npm run preview    # preview the production build
 
 ## Deploy
 
+The site is live at **https://amyleesterling.github.io/the650/**.
+
 Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds and
-publishes `dist/` to GitHub Pages. Enable Pages for the repo with the **GitHub
-Actions** source. The site is served from `/the650/` (set as `base` in
-`vite.config.ts`).
+publishes `dist/` to GitHub Pages (repo **Settings → Pages → Source: GitHub
+Actions**). The production build uses a **relative** asset base (`base: './'`
+in `vite.config.ts`), so the bundled CSS/JS resolve correctly whatever sub-path
+Pages serves from — combined with `HashRouter`, deep links work without any
+server-side rewrite.
 
 ---
 

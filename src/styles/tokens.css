@@ -1,7 +1,8 @@
 /*
  * The 650 — design tokens.
  * Defined once, honored throughout. Calm, anatomical, precise.
- * A cool ground; one warm "activation" accent for lit muscles.
+ * A cool ground; a green "activation" accent for lit muscles, with a blue
+ * secondary for the resting/stabilizer layers. Blues and greens throughout.
  */
 
 :root {
@@ -19,19 +20,20 @@
   --ink-300: #8fa2ac; /* tertiary / captions */
   --ink-400: #62757f; /* faint labels */
 
-  /* ---- Activation accent (warm glow for engaged muscles) ---- */
-  --accent-050: #fff4e6;
-  --accent-300: #ffc98a;
-  --accent-400: #ffb15e;
-  --accent-500: #ff9a3d; /* primary activation */
-  --accent-600: #f2822a;
-  --accent-glow: rgba(255, 154, 61, 0.55);
-  --accent-soft: rgba(255, 154, 61, 0.14);
+  /* ---- Activation accent (green glow for engaged muscles) ---- */
+  --accent-050: #e7fff4;
+  --accent-300: #74f0c0;
+  --accent-400: #35e0a2;
+  --accent-500: #1ec98a; /* primary activation */
+  --accent-600: #12a874;
+  --accent-glow: rgba(30, 201, 138, 0.55);
+  --accent-soft: rgba(30, 201, 138, 0.14);
+  --accent-ink: #04231a; /* dark text on the green accent */
 
-  /* ---- Cool secondary (resting muscle, stabilizer shimmer) ---- */
-  --cool-400: #6fd3c7;
-  --cool-500: #46b9ac;
-  --cool-glow: rgba(111, 211, 199, 0.35);
+  /* ---- Cool secondary (resting muscle, stabilizer shimmer) — blue ---- */
+  --cool-400: #6fb6ff;
+  --cool-500: #3f8ef0;
+  --cool-glow: rgba(111, 182, 255, 0.38);
 
   /* ---- Semantic ---- */
   --bg: var(--ground-800);
