@@ -4,17 +4,23 @@ The `/figure-3d` prototype automatically loads a scanned model from this folder
 if one is present, and recolours it violet. Until then it falls back to the
 data-driven capsule figure.
 
+The loader tries **`anatomy.glb`** first, then **`anatomy.fbx`** — either works,
+no conversion needed (FBX is loaded directly with three.js's `FBXLoader`).
+
 ## To add a real model
 
 1. Obtain a permissively-licensed muscle model (all CC-BY-SA — keep attribution):
-   - **BodyParts3D / Anatomography** (DBCLS) — individual muscle meshes tagged
-     with FMA anatomy IDs. https://lifesciencedb.jp/bp3d/
-   - **Z-Anatomy** — complete atlas derived from BodyParts3D.
-     https://www.z-anatomy.com/
-2. Export/convert to **glTF binary (`.glb`)**. Decimate to keep it light — aim
-   for well under ~10 MB so it stays snappy on GitHub Pages.
-3. Save it here as **`anatomy.glb`** (`public/models/anatomy.glb`).
-4. Reload `/figure-3d`. The badge will switch from “data-driven prototype” to
+   - **Z-Anatomy** (https://github.com/LluisV/Z-Anatomy) — complete atlas.
+     Download the **FBX** and save it here as `anatomy.fbx`.
+   - **BodyParts3D / Anatomography** (DBCLS, https://lifesciencedb.jp/bp3d/) —
+     individual muscle meshes tagged with FMA anatomy IDs (best for per-muscle
+     mapping). Exports OBJ; convert to `.glb`.
+2. **Watch the size.** The full atlas (all body systems) is far too big for
+   GitHub Pages (>100 MB won't even commit). Keep only the muscular layer and
+   decimate — aim for well under ~10 MB. In Blender: delete other systems →
+   Decimate modifier → export.
+3. Save it here as `anatomy.fbx` or `anatomy.glb`.
+4. Reload `/figure-3d`. The badge switches from “data-driven prototype” to
    “scanned model”.
 
 ## Per-muscle highlighting (next step)
