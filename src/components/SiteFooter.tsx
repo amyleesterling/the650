@@ -18,6 +18,7 @@ export default function SiteFooter() {
           <Link to="/why">Why Gentle &amp; Slow</Link>
           <Link to="/practice">The Practice</Link>
           <Link to="/about">About &amp; Sources</Link>
+          <Link to="/figure-3d">3D figure (prototype)</Link>
         </nav>
 
         <p className="footer__disclaimer muted">
