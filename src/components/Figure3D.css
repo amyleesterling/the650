@@ -1,0 +1,64 @@
+.fig3d {
+  position: relative;
+  width: 100%;
+  height: min(72vh, 640px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background:
+    radial-gradient(
+      60% 55% at 50% 40%,
+      rgba(139, 92, 246, 0.12),
+      transparent 70%
+    ),
+    var(--ground-900);
+  touch-action: none;
+}
+
+.fig3d__canvas {
+  position: absolute;
+  inset: 0;
+}
+.fig3d__canvas canvas {
+  display: block;
+  cursor: grab;
+}
+.fig3d__canvas canvas:active {
+  cursor: grabbing;
+}
+
+.fig3d__overlay {
+  position: absolute;
+  left: var(--space-4);
+  bottom: var(--space-4);
+  right: var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  pointer-events: none;
+}
+
+.fig3d__badge {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid color-mix(in srgb, #8b5cf6 45%, var(--border));
+  color: #c4b5fd;
+  background: color-mix(in srgb, #8b5cf6 12%, transparent);
+}
+.fig3d__badge--model {
+  color: var(--accent-300);
+  border-color: color-mix(in srgb, var(--accent-500) 45%, var(--border));
+  background: var(--accent-soft);
+}
+
+.fig3d__hover {
+  font-family: var(--font-serif);
+  font-size: var(--step-1);
+  color: var(--ink-100);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}

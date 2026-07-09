@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import NavBar from "./components/NavBar";
 import SiteFooter from "./components/SiteFooter";
 import HomeView from "./views/HomeView";
@@ -9,6 +9,10 @@ import WhyGentleView from "./views/WhyGentleView";
 import PracticeView from "./views/PracticeView";
 import AboutView from "./views/AboutView";
 import "./App.css";
+
+// The 3D prototype pulls in three.js — lazy-load it so it never weighs down
+// the main visualization's bundle.
+const Figure3DView = lazy(() => import("./views/Figure3DView"));
 
 /** Scroll to the top on navigation — settles, doesn't jump, per motion prefs. */
 function ScrollReset() {
@@ -35,6 +39,14 @@ export default function App() {
           <Route path="/why" element={<WhyGentleView />} />
           <Route path="/practice" element={<PracticeView />} />
           <Route path="/about" element={<AboutView />} />
+          <Route
+            path="/figure-3d"
+            element={
+              <Suspense fallback={<div className="container" style={{ padding: "3rem 0" }}>Loading the 3D figure…</div>}>
+                <Figure3DView />
+              </Suspense>
+            }
+          />
           <Route path="*" element={<HomeView />} />
         </Routes>
       </main>
