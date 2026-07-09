@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader.js";
 import { placedMuscles } from "../three/muscleLayout";
 import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 import "./Figure3D.css";
@@ -12,8 +13,11 @@ const MUSCLE_EMISSIVE = new THREE.Color("#4c1d95");
 const MUSCLE_HOT = new THREE.Color("#d6c6ff");
 const CORE = new THREE.Color("#26303b");
 
-/** Optional scanned model; if present it is used instead of the capsules. */
-const MODEL_URL = `${import.meta.env.BASE_URL}models/anatomy.glb`;
+/* Optional scanned model — the first that loads wins, else the capsules stand
+ * in. GLB is preferred (smallest, fastest); FBX (e.g. a Z-Anatomy export) loads
+ * directly too, no conversion needed. */
+const MODEL_GLB = `${import.meta.env.BASE_URL}models/anatomy.glb`;
+const MODEL_FBX = `${import.meta.env.BASE_URL}models/anatomy.fbx`;
 
 export default function Figure3D() {
   const mountRef = useRef<HTMLDivElement | null>(null);
@@ -107,43 +111,53 @@ export default function Figure3D() {
     coreGroup.add(torso, head);
     scene.add(coreGroup);
 
-    // ---- attempt to load a scanned model; recolor it violet if present
+    // ---- attempt to load a scanned model; recolor it violet if present.
+    // Try GLB first, then FBX (a Z-Anatomy export loads directly, no convert).
     let disposed = false;
-    const loader = new GLTFLoader();
-    loader.load(
-      MODEL_URL,
-      (gltf) => {
-        if (disposed) return;
-        const model = gltf.scene;
-        model.traverse((obj) => {
-          const m = obj as THREE.Mesh;
-          if (m.isMesh) {
-            m.material = new THREE.MeshStandardMaterial({
-              color: MUSCLE,
-              emissive: MUSCLE_EMISSIVE,
-              emissiveIntensity: 0.25,
-              roughness: 0.5,
-              metalness: 0.0,
-            });
-          }
-        });
-        // frame the model to a consistent size
-        const box = new THREE.Box3().setFromObject(model);
-        const size = new THREE.Vector3();
-        const center = new THREE.Vector3();
-        box.getSize(size);
-        box.getCenter(center);
-        const scale = 15 / (size.y || 1);
-        model.scale.setScalar(scale);
-        model.position.sub(center.multiplyScalar(scale));
-        muscleGroup.visible = false;
-        coreGroup.visible = false;
-        scene.add(model);
-        setMode("model");
-      },
+
+    function applyModel(model: THREE.Object3D) {
+      if (disposed) return;
+      model.traverse((obj) => {
+        const m = obj as THREE.Mesh;
+        if (m.isMesh) {
+          m.material = new THREE.MeshStandardMaterial({
+            color: MUSCLE,
+            emissive: MUSCLE_EMISSIVE,
+            emissiveIntensity: 0.25,
+            roughness: 0.5,
+            metalness: 0.0,
+          });
+        }
+      });
+      // frame the model to a consistent size and centre it
+      const box = new THREE.Box3().setFromObject(model);
+      const size = new THREE.Vector3();
+      const center = new THREE.Vector3();
+      box.getSize(size);
+      box.getCenter(center);
+      const scale = 15 / (size.y || 1);
+      model.scale.setScalar(scale);
+      model.position.sub(center.multiplyScalar(scale));
+      muscleGroup.visible = false;
+      coreGroup.visible = false;
+      scene.add(model);
+      setMode("model");
+    }
+
+    new GLTFLoader().load(
+      MODEL_GLB,
+      (gltf) => applyModel(gltf.scene),
       undefined,
       () => {
-        /* no model present — keep the data-driven capsule figure */
+        // no GLB — try an FBX export instead
+        new FBXLoader().load(
+          MODEL_FBX,
+          (obj) => applyModel(obj),
+          undefined,
+          () => {
+            /* no model present — keep the data-driven capsule figure */
+          },
+        );
       },
     );
 
